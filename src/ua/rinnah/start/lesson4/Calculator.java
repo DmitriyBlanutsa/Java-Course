@@ -9,7 +9,6 @@ import java.util.regex.Pattern;
  * математическое выражение типа “1+33-4*7”. Написать
  * программу для подсчета его значения. Приоритет
  * операций не учитывается
- * kjk
  */
 public class Calculator {
 
@@ -54,7 +53,7 @@ public class Calculator {
     }
 
     private static void calculate() {
-        double res = 0;
+        double res;
         if (isError()) {
             return;
         } else {
