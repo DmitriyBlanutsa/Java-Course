@@ -10,7 +10,7 @@ public class Other {
      private static Scanner scanner;
 
      public static void main(String[] args) {
-          System.out.println(" ================= Task1 =================== ");
+          System.out.println(" ================= Task1 ==================== ");
           System.out.print("Enter date in formatt dd.MM.yyyy:");
           scanner = new Scanner(System.in);
           String str = scanner.nextLine();
