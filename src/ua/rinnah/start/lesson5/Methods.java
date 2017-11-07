@@ -4,10 +4,6 @@ import java.util.Arrays;
 public class Methods {
 
 
-    public static void main(String[] args) {
-
-    }
-
     /**
      *  Написать функцию, которая принимает массив чисел в качестве
      * аргумента, увеличивает его первые 3 элемента на 1 и
@@ -30,29 +26,24 @@ public class Methods {
      *  Написать ф-ю, которая принимает на вход массив чисел и
      * возвращает его длину в байтах как результат
      */
-    private static int amountOfBytes(byte[] arr){
-        return arr.length;
-    }
-
-    private static int amountOfBytes(short[] arr){
-        return arr.length*2;
-    }
-
-    private static int amountOfBytes(int[] arr){
-        return arr.length*4;
-    }
-
-    private static int amountOfBytes(long[] arr){
-        return arr.length*8;
-    }
-
-    private static int amountOfBytes(float[] arr){
-        return arr.length*4;
-    }
-
-    private static int amountOfBytes(double[] arr){
-        return arr.length*8;
-    }
+    private static int amountOfBytes(Object object) {
+        if (object instanceof int[]) {
+            return ((int[]) object).length * 4;
+        }else if(object instanceof byte[]) {
+            return ((byte[]) object).length;
+        }else if(object instanceof short[]) {
+            return ((short[]) object).length * 2;
+        }else if(object instanceof long[]) {
+            return ((long[]) object).length * 8;
+        }else if(object instanceof float[]) {
+            return ((float[]) object).length * 4;
+        }else if(object instanceof double[]) {
+            return ((double[]) object).length * 8;
+        }else if(object instanceof boolean[]) {
+            return ((boolean[]) object).length;
+        }
+        return 0;
+    };
 
     /**
      *  Написать ф-ю для объединения 2-х массивов в один. Вывести

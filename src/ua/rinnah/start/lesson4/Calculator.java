@@ -1,5 +1,6 @@
 package ua.rinnah.start.lesson4;
 
+
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,8 +19,8 @@ public class Calculator {
     private static Matcher m;
 
     public static void main(String[] args) {
-        getExpression();
-        calculate();
+       getExpression();
+       System.out.println(isError());
     }
 
     private static void getExpression() {
@@ -41,7 +42,8 @@ public class Calculator {
     }
 
     private static boolean isError() {
-        String regex = "^([-]?((([0]|([1-9]\\d*))(\\.|[,])\\d+)|([1-9]\\d*))" + "[+\\-*/%^])*" + "[-]?((([0]|([1-9]\\d*))(\\.|[,])\\d+)|([1-9]\\d*))$";
+        String regex = "^[-]?((([0]|([1-9]\\d*))(\\.|[,])\\d+)|([1-9]\\d*))";
+                //+ "[+\\-*/%^])*" + "[-]?((([0]|([1-9]\\d*))(\\.|[,])\\d+)|([1-9]\\d*))$";
         p = Pattern.compile(regex);
         m = p.matcher(exp);
         if (m.matches()) {
