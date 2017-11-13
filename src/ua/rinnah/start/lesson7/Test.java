@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Test {
-
+    //лекция тестирования
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
