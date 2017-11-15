@@ -8,7 +8,7 @@ public class Test {
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("=== Task1 ===");
+        /*System.out.println("=== Task1 ===");
         System.out.print("Enter 3 words: ");
         String sentence = scanner.nextLine();
         System.out.println(swap(sentence));
@@ -22,7 +22,7 @@ public class Test {
         System.out.println(sum1(new int[]{1, 2, 3}, new int[]{1, 2, 3}, new int[]{1, 2, 3}));
         System.out.println(sum2(new int[]{1, 2, 3}, new int[]{1, 2, 3}, new int[]{1, 2, 3}));
         System.out.println("=== Task4 ===");
-        System.out.println(redacted("I am    very       Issdfs                           sdfsdf T T T sdfsdf. Yes        asdg"));
+        System.out.println(redacted("I am    very       Issdfs                           sdfsdf T T T sdfsdf. Yes        asdg"));*/
     }
 
 
