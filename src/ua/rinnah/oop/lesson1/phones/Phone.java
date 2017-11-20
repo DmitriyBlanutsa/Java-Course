@@ -5,10 +5,11 @@ import java.util.regex.Pattern;
 
 public class Phone {
 
+    private static Network network;
+
     private String number;
     private String color;
     private String model;
-    private static Network network;
 
     public Phone(String number, String color, String model) {
         isValid(number);

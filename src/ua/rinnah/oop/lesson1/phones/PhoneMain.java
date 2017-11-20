@@ -8,6 +8,7 @@ public class PhoneMain {
 
         Phone myPhone = new Phone("+38(067)5110255","black","meizu");
         Phone mother = new Phone("0675111111");
+        System.out.println(mother);
         //incorrect format
         Phone dad = new Phone("06751102275");
 
