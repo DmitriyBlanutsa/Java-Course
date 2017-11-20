@@ -11,22 +11,34 @@ public class Phone {
     private static Network network;
 
     public Phone(String number, String color, String model) {
-        if (isValid(number))
-            this.number = number;
-        else
-            System.out.println("Number is not valid!!!");
+        isValid(number);
         this.color = color;
         this.model = model;
     }
 
     public Phone(String number) {
-        if (isValid(number))
+        isValid(number);
+    }
+
+    public Phone() {
+    }
+
+    /*supporting format:
+   +380XXXXXXXXX
+   +38(0XX)XXXXXXX
+   0XXXXXXXXX
+   (0XX)XXXXXXX
+   */
+    final private void isValid(String number){
+        Pattern p = Pattern.compile("^(\\+38)?\\(?[0][1-9]\\d\\)?[0-9]{3}\\-?[0-9]{2}\\-?[0-9]{2}$");
+        Matcher m = p.matcher(number);
+        if (m.matches())
             this.number = number;
         else
             System.out.println("Number is not valid!!!");
     }
 
-    public void addPhone(){
+    public void registration(){
         if (number != null) {
             number = number.replace("+38", "")
                     .replace("-", "")
@@ -52,20 +64,12 @@ public class Phone {
             System.out.println("Error!!! This number does not exist!!!");
     }
 
-    /*supporting format:
-    +380XXXXXXXXX
-    +38(0XX)XXXXXXX
-    0XXXXXXXXX
-    (0XX)XXXXXXX
-    */
-    final private boolean isValid(String number){
-        Pattern p = Pattern.compile("^(\\+38)?\\(?[0][1-9]\\d\\)?[0-9]{3}\\-?[0-9]{2}\\-?[0-9]{2}$");
-        Matcher m = p.matcher(number);
-        return m.matches();
+    @Override
+    public String toString(){
+        return String.format("Phone{Number: \"%s\", Model: \"%s\", Color: \"%s\"}",
+                number, model, color);
     }
 
-    public Phone() {
-    }
 
     public String getNumber() {
         return number;

@@ -11,10 +11,10 @@ public class PhoneMain {
         //incorrect format
         Phone dad = new Phone("06751102275");
 
-        myPhone.addPhone();
-        mother.addPhone();
+        myPhone.registration();
+        mother.registration();
         //subscriber without number
-        dad.addPhone();
+        dad.registration();
 
         //correct
         myPhone.call("0675111111");
