@@ -11,6 +11,9 @@ public class Triangle {
         setTriangle(firstSide, secondSide, thirdSide);
     }
 
+    public Triangle() {
+    }
+
     final void setTriangle(double firstSide, double secondSide, double thirdSide){
         if(isTriangle(firstSide, secondSide, thirdSide)) {
             this.firstSide = firstSide;
@@ -21,16 +24,12 @@ public class Triangle {
             System.out.println("Triangle does not exist!!!");
     }
 
-    public Triangle() {
-    }
-
     final private boolean isTriangle(double firstSide, double secondSide, double thirdSide){
         if (firstSide < secondSide+thirdSide && secondSide < firstSide+thirdSide && thirdSide < firstSide+secondSide)
             return true;
         else
             return false;
     }
-
 
     private void calcArea(){
         double halfPer = (firstSide + secondSide + thirdSide)/2;
