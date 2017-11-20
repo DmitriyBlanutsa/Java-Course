@@ -44,7 +44,6 @@ public class Triangle {
     }
 
     public double getFirstSide() {
-
         return firstSide;
     }
 

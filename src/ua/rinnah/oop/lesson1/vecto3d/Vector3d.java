@@ -1,6 +1,6 @@
 package ua.rinnah.oop.lesson1.vecto3d;
 
-public class Vector3d {
+public class Vector3d{
 
     private double x;
     private double y;
