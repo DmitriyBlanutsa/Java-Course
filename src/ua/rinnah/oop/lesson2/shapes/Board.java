@@ -53,6 +53,10 @@ public class Board {
         return board.toString();
     }
 
+    public int getSIZE() {
+        return SIZE;
+    }
+
     public int getCountShapes() {
         return countShapes;
     }

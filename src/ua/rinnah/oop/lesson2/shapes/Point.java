@@ -13,13 +13,13 @@ public class Point{
     public Point() {
     }
 
-    public double getX() {
-        return x;
-    }
-
     @Override
     public String toString() {
         return String.format("Point{x: %.2f, y: %.2f}", x, y);
+    }
+
+    public double getX() {
+        return x;
     }
 
     public void setX(double x) {
