@@ -24,8 +24,10 @@ public class Board {
     }
 
     public void remove(int nomer){
-        shapes[nomer] = null;
-        countShapes--;
+        if (nomer < SIZE && nomer >= 0) {
+            shapes[nomer] = null;
+            countShapes--;
+        }
     }
 
     public void removeAll(){
