@@ -49,20 +49,20 @@ public class Group {
             }
     }
 
-    public int search(String lastname){
+    public Student search(String lastname){
         try{
             if (lastname == null) {
                 throw new IllegalArgumentException("lastname is empty");
             }else{
                 for (int i = 0; i < SIZE; i++)
                         if (group[i] != null && group[i].getLastname() != null && group[i].getLastname().equals(lastname)) {
-                            return i;
+                            return group[i];
                         }
             }
         }catch (IllegalArgumentException e){
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 
     @Override
