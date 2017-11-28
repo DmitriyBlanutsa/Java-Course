@@ -1,4 +1,4 @@
-package ua.rinnah.oop.lesson3;
+package ua.rinnah.oop.lesson3_4;
 
 public enum Gender{
     MAN(true), WOMAN(false);
@@ -7,6 +7,10 @@ public enum Gender{
 
     private Gender(boolean sex){
         this.sex = sex;
+    }
+
+    public boolean isSex() {
+        return sex;
     }
 
     public String getGender(){

@@ -1,4 +1,4 @@
-package ua.rinnah.oop.lesson3;
+package ua.rinnah.oop.lesson3_4;
 
 class SizeGroupExeption extends Exception{
 
