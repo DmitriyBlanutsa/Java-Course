@@ -6,7 +6,11 @@ import java.util.Scanner;
 public class Group implements MilitaryRegistration{
 
     final private int SIZE = 10;
-    private Student[] students = new Student[SIZE];
+    private Student[] students;
+
+    public Group(Student[] students) {
+        this.students = students;
+    }
 
     public void Group(){
     }
@@ -25,6 +29,13 @@ public class Group implements MilitaryRegistration{
         }
     }
 
+    public Student[] getStudents() {
+        return students;
+    }
+
+    public void setStudents(Student[] students) {
+        this.students = students;
+    }
 
     public void interactiveAdd(){
         Scanner sc = new Scanner(System.in);
@@ -217,18 +228,19 @@ public class Group implements MilitaryRegistration{
 
     @Override
     public Student[] registrarion() {
-        Student[] military = new Student[SIZE];
         int n =  0;
+        for (Student student : students){
+            if (student != null && student.getAge() >= 18) {
+                n++;
+            }
+        }
+        n =  0;
+        Student[] military = new Student[n];
         for (Student student : students){
             if (student != null && student.getAge() >= 18) {
                 military[n] = student;
                 n++;
             }
-        }
-        if (n != SIZE) {
-            Student[] newMilitary = new Student[n];
-            System.arraycopy(military, 0, newMilitary, 0, n);
-            return newMilitary;
         }
         return military;
     }

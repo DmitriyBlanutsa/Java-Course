@@ -14,7 +14,20 @@ public class Person {
         this.gender = gender;
     }
 
+    public Person(String firstname, String lastname, int age, String gender) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        ageValidation(age);
+        this.gender = genderValidation(gender);
+    }
+
     public Person() {
+    }
+
+    private final Gender genderValidation(String str){
+        if (str.equals("MAN"))
+            return Gender.MAN;
+        return Gender.WOMAN;
     }
 
     final private void ageValidation(int age){

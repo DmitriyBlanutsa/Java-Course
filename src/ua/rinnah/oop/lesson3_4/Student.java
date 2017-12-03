@@ -15,6 +15,14 @@ public class Student extends Person{
         scoreValidation(averegeScore);
     }
 
+    public Student(String firstname, String lastname, int age, String gender, String university, String faculty, String specialty, double averegeScore) {
+        super(firstname, lastname, age, gender);
+        this.university = university;
+        this.faculty = faculty;
+        this.specialty = specialty;
+        scoreValidation(averegeScore);
+    }
+
     public Student(Person person,String university, String faculty, String specialty, double averegeScore){
         super(person.getFirstname(), person.getLastname(), person.getAge(), person.getGender());
         this.university = university;
