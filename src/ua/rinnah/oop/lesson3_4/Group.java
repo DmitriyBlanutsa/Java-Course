@@ -1,5 +1,6 @@
 package ua.rinnah.oop.lesson3_4;
 
+import java.io.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -243,6 +244,30 @@ public class Group implements MilitaryRegistration{
             }
         }
         return military;
+    }
+
+    public static void saveObject(Group group, File file){
+        try(ObjectOutput os = new ObjectOutputStream(new FileOutputStream(file))){
+            os.writeObject(group);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void saveObject(File file){
+        try(ObjectOutput os = new ObjectOutputStream(new FileOutputStream(file))){
+            os.writeObject(this);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public static Group loadObject(File file) {
+        try (ObjectInput oi = new ObjectInputStream(new FileInputStream(file))) {
+            return (Group) oi.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            return null;
+        }
     }
 }
 

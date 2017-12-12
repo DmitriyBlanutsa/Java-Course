@@ -1,6 +1,6 @@
 package ua.rinnah.oop.lesson3_4;
 
-class SizeGroupExeption extends Exception{
+public class SizeGroupExeption extends Exception{
 
     @Override
     public String getMessage() {
