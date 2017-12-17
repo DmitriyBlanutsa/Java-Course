@@ -1,7 +1,7 @@
-package ua.rinnah.oop.lesson5;
+/*package ua.rinnah.oop.lesson5;
 
 import ua.rinnah.oop.lesson3_4.Gender;
-import ua.rinnah.oop.lesson3_4.Group;
+//import ua.rinnah.oop.lesson3_4.Group;
 import ua.rinnah.oop.lesson3_4.Person;
 import ua.rinnah.oop.lesson3_4.Student;
 
@@ -19,7 +19,7 @@ import java.util.Arrays;
  добавив возможность сохранения группы в файл.
  4.  Реализовать  обратный  процесс  —  т.е.  считать  данные  о
  группе из файла и на их основе создать объект типа группа.
- */
+
 
 public class Main {
 
@@ -79,4 +79,4 @@ public class Main {
     }
 
 
-}
+}*/

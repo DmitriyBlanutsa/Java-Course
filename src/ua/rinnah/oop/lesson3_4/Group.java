@@ -1,158 +1,84 @@
 package ua.rinnah.oop.lesson3_4;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Group implements MilitaryRegistration{
 
-    final private int SIZE = 10;
-    private Student[] students;
+    private List<Student> students;
 
-    public Group(Student[] students) {
+    public Group(List<Student> students) {
         this.students = students;
     }
 
-    public void Group(){
+    public Group(){
+        students = new ArrayList<>();
     }
 
     public void add(Student student){
-        for (int i = 0; i < SIZE; i++){
-            if (students[i] == null) {
-                students[i] = student;
-                return;
+        try {
+            if (student == null) {
+                throw new IllegalArgumentException("Student is NULL!!!");
             }
+        }catch (IllegalArgumentException e){
+            e.printStackTrace();
+            return;
         }
-        try{
-            throw new SizeGroupExeption();
-        }catch (SizeGroupExeption e){
-            System.err.print(e.getMessage());
-        }
+        students.add(student);
     }
 
-    public Student[] getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Student[] students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
-    }
-
-    public void interactiveAdd(){
-        Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < SIZE; i++){
-            if (students[i] == null) {
-                System.out.print("Enter firstname: ");
-                String firstname = sc.next();
-
-                System.out.print("Enter lastname: ");
-                String lastname = sc.next();
-
-                int age = 0;
-                System.out.print("Enter age: ");
-                if (sc.hasNextInt()){
-                    age = sc.nextInt();
-                } else
-                    System.out.println("You did not enter an integer!!!");
-
-                String str;
-                while(true) {
-                    System.out.print("Enter gender(m\\w): ");
-                    str = sc.next();
-                    if (str.equals("m") || str.equals("w"))
-                        break;
-                }
-                Gender gender;
-                if (str.equals("m"))
-                    gender = Gender.MAN;
-                else
-                    gender = Gender.WOMAN;
-
-                System.out.print("Enter university: ");
-                String university = sc.next();
-
-                System.out.print("Enter faculty: ");
-                String faculty = sc.next();
-
-                System.out.print("Enter specialty: ");
-                String specialty = sc.next();
-
-                double averegeScore = 0;
-                System.out.print("Enter age: ");
-                if (sc.hasNextDouble()){
-                    averegeScore = sc.nextDouble();
-                } else
-                    System.out.println("You did not enter an double!!!");
-                students[i] = new Student(firstname, lastname, age, gender, university, faculty, specialty, averegeScore);
-                return;
-            }
-        }
-        try{
-            throw new SizeGroupExeption();
-        }catch (SizeGroupExeption e){
-            System.err.print(e.getMessage());
-        }
     }
 
     public void delete(int number){
         try{
-            if (number < 0 || number > SIZE - 1) {
+            if (number < 0 || number > students.size() - 1) {
                 throw new IllegalArgumentException("invalid number");
-            } else{
-                students[number] = null;
             }
         }catch (IllegalArgumentException e){
             e.printStackTrace();
+            return;
         }
+        students.remove(number);
     }
 
     public void deleteAll(){
-        for (int i = 0; i < SIZE; i++)
-            if (students[i] != null) {
-                students[i] = null;
-            }
+        students.clear();
     }
 
-    public Student search(String lastname){
-        try{
+    public Student search(String lastname) {
+        try {
             if (lastname == null) {
                 throw new IllegalArgumentException("lastname is empty");
-            }else{
-                for (int i = 0; i < SIZE; i++)
-                        if (students[i] != null && students[i].getLastname() != null && students[i].getLastname().equals(lastname)) {
-                            return students[i];
-                        }
             }
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             e.printStackTrace();
+            return null;
         }
+        for (Student student : students)
+            if (student.getLastname() != null && student.getLastname().equals(lastname)) {
+                return student;
+            }
         return null;
     }
 
     public void sort(ParametrSort parametr){
-        Arrays.sort(students, (a, b) -> {
+        students.sort((a, b) -> {
             if (isNull(a, b) != 100)
                 return isNull(a, b);
             else {
                 switch (parametr) {
                     case LASTNAME:
-                        if (a.getLastname() == null && b.getLastname() == null)
-                            return 0;
-                        else if (a.getLastname() == null)
-                            return 1;
-                        else if (b.getLastname() == null)
-                            return -1;
-                        else
-                            return a.getLastname().compareTo(b.getLastname());
+                        getSortValue(a, b, "lastname");
                     case FIRSTNAME:
-                        if (a.getFirstname() == null && b.getFirstname() == null)
-                            return 0;
-                        else if (a.getFirstname() == null)
-                            return 1;
-                        else if (b.getFirstname() == null)
-                            return -1;
-                        else
-                            return a.getFirstname().compareTo(b.getFirstname());
+                        getSortValue(a, b, "firstname");
                     case AGE:
                             return a.getAge() - b.getAge();
                     case GENDER:
@@ -169,32 +95,11 @@ public class Group implements MilitaryRegistration{
                         else
                             return 1;
                     case UNIVERSITY:
-                        if (a.getUniversity() == null && b.getUniversity() == null)
-                            return 0;
-                        else if (a.getUniversity() == null)
-                            return 1;
-                        else if (b.getUniversity() == null)
-                            return -1;
-                        else
-                            return a.getUniversity().compareTo(b.getUniversity());
+                        getSortValue(a, b, "university");
                     case FACULTY:
-                        if (a.getFaculty() == null && b.getFaculty() == null)
-                            return 0;
-                        else if (a.getFaculty() == null)
-                            return 1;
-                        else if (b.getFaculty() == null)
-                            return -1;
-                        else
-                            return a.getFaculty().compareTo(b.getFaculty());
-                    case SPECIALZTY:
-                        if (a.getSpecialty() == null && b.getSpecialty() == null)
-                            return 0;
-                        else if (a.getSpecialty() == null)
-                            return 1;
-                        else if (b.getSpecialty() == null)
-                            return -1;
-                        else
-                            return a.getSpecialty().compareTo(b.getSpecialty());
+                        getSortValue(a, b, "faculty");
+                    case SPECIALTY:
+                        getSortValue(a, b, "specialty");
                     case AVEREGE_SCORE:
                         if (a.getAveregeScore() == b.getAveregeScore())
                             return 0;
@@ -206,6 +111,29 @@ public class Group implements MilitaryRegistration{
                 }
             }
         });
+    }
+
+    private int getSortValue(Student a, Student b, String str){
+        try {
+            Field field = Student.class.getDeclaredField(str);
+            field.setAccessible(true);
+            String value1 = (String) field.get(a);
+            String value2 = (String) field.get(b);
+            if (value1 == null && value2 == null)
+                return 0;
+            else if (value1 == null)
+                return -1;
+            else if (value2 == null)
+                return 1;
+            else
+                return value1.compareTo(value2);
+        }catch (IllegalAccessException e){
+            e.printStackTrace();
+            return 0;
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 
     private int isNull(Student a, Student b){
@@ -221,29 +149,21 @@ public class Group implements MilitaryRegistration{
     @Override
     public String toString() {
         StringBuilder str = new StringBuilder("Group{\r\n\r\n");
-        for (int i = 0; i < SIZE; i++)
-            if (students[i] != null)
-                str.append(students[i].toString()).append("\r\n\r\n");
+        for (int i = 0; i < students.size(); i++)
+            if (students.get(i) != null)
+                str.append(students.get(i).toString()).append("\r\n\r\n");
         return str.append("}\r\n").toString();
     }
 
     @Override
-    public Student[] registrarion() {
-        int n =  0;
+    public List<Student> registrarion() {
+        List<Student> milStudents = new ArrayList<>();
         for (Student student : students){
-            if (student != null && student.getAge() >= 18) {
-                n++;
+            if (student.getAge() >= 18) {
+                milStudents.add(student);
             }
         }
-        n =  0;
-        Student[] military = new Student[n];
-        for (Student student : students){
-            if (student != null && student.getAge() >= 18) {
-                military[n] = student;
-                n++;
-            }
-        }
-        return military;
+        return milStudents;
     }
 
     public static void saveObject(Group group, File file){

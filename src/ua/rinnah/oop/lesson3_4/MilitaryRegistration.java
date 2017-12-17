@@ -1,7 +1,9 @@
 package ua.rinnah.oop.lesson3_4;
 
-public interface MilitaryRegistration {
+import java.util.List;
 
-    public Student[] registrarion();
+public interface MilitaryRegistration{
+
+    public List<Student> registrarion();
 
 }

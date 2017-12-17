@@ -1,4 +1,4 @@
-package ua.rinnah.oop.lesson5;
+/*package ua.rinnah.oop.lesson5;
 
 import ua.rinnah.oop.lesson3_4.Group;
 import ua.rinnah.oop.lesson3_4.Student;
@@ -62,4 +62,4 @@ public class FileInputOutputGroup {
         return new Group(arr);
     }
 
-}
+}*/

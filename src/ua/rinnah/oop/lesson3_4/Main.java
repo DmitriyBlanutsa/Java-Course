@@ -41,7 +41,7 @@ public class Main {
         Student student10 = new Student(person10, null, "FICT", "software engineering", 4.0);
 
 
-        Group group = new Group(new Student[10]);
+        Group group = new Group();
         group.add(student1);
         group.add(student2);
         group.add(student3);
@@ -54,31 +54,39 @@ public class Main {
         group.add(student10);
         System.out.println(group);
 
+        /*System.err.println("FIRSTNAME");
         group.sort(ParametrSort.FIRSTNAME);
         System.out.println(group);
 
+        System.err.println("LASTNAME");
         group.sort(ParametrSort.LASTNAME);
-        System.out.println(group);
+        System.out.println(group);*/
 
+        System.err.println("AGE");
         group.sort(ParametrSort.AGE);
         System.out.println(group);
 
+        System.err.println("GENDER");
         group.sort(ParametrSort.GENDER);
         System.out.println(group);
 
+        System.err.println("UNIVERSITY");
         group.sort(ParametrSort.UNIVERSITY);
         System.out.println(group);
 
+        System.err.println("FACULTY");
         group.sort(ParametrSort.FACULTY);
         System.out.println(group);
 
-        group.sort(ParametrSort.SPECIALZTY);
+        System.err.println("SPECIALTY");
+        group.sort(ParametrSort.SPECIALTY);
         System.out.println(group);
 
+        System.err.println("AVEREGE_SCORE");
         group.sort(ParametrSort.AVEREGE_SCORE);
         System.out.println(group);
 
-        System.out.println(Arrays.toString(group.registrarion()));
+        System.out.println(group.registrarion());
     }
 
 }
